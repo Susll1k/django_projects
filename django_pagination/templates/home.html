@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% load filtersandtags %}
+
+
+
+{% block content%}
+    {% for book in page.object_list %}
+        <div class="box">
+            <h1>{{ book.title|customadd:'qwerty' }}</h1>
+            <button><a href="{% url 'update' id=book.id %}">Update</a></button>
+            <button><a href="{% url 'delete' id=book.id %}">Delete</a></button>
+        </div>
+    {% endfor %}
+
+
+
+
+    {% bootstrap_pagination page %}
+
+    <!-- <div class="paginator">
+    {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}" class="pag1"><</a>
+    {% endif %}
+
+    <p>Page {{ page.number }} of {{ page.paginator.num_pages }}</p>
+
+    {% if page.has_next %} 
+        <a href="?page={{ page.next_page_number }}" class="pag2">></a>    
+    {% endif %} 
+    </div> -->
+
+{% endblock %}

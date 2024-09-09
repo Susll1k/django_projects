@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(20, 21, 24);
+    color: rgb(195, 219, 219);
+}
+nav{
+    width: 100% 0;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(8, 8, 8);
+    text-align: center;
+}
+.navlogo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+.navul{
+    display: flex;
+    justify-content: space-around;
+    gap: 80px;
+    align-items: center;
+}
+.form{
+    margin-top: 160px;
+    display: flex;
+    justify-content: center;
+    height: 300px;
+}
+a, li{
+    text-decoration: none;
+    list-style-type: none;
+    color: rgb(195, 219, 219);
+}
+img{
+    width: 200px;
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

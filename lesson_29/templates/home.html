@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <h1>Photos</h1>
+    {{ greeting_message }}
+
+
+    <p>Custom attr: {{ custom_attr_1 }}</p>
+    <p>Custom attr: {{ custom_attr_2 }}</p>
+
+    {% for user in users %}
+        <img src="{{user.photo.url}}" alt="">
+    {% endfor %}
+{% endblock %}

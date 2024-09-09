@@ -1,0 +1,26 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <ul class="navul">
+        <h1>LOGO</h1>
+            <li><h3><a href="{% url 'create' %}">Create</a></h3></li>
+        </ul>
+    </nav>
+    <h1>BOOKS</h1>
+    <div class="conteiner">
+    {% block content %}
+
+    {% endblock %}
+    </div>
+</body>
+</html>
