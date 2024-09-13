@@ -8,7 +8,7 @@ from django.http import HttpRequest, HttpResponse
 from django.core.mail import send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
-from .serializers import ProductSerializer,UserSerializer
+from .serializers import ProductSerializer,UserProfileSerializer
 from .models import Product
 from django.http import JsonResponse
 from rest_framework.decorators import api_view,permission_classes
@@ -112,5 +112,5 @@ class APIProductsViewSet(ModelViewSet):
 
 class APIReadOnlyUsersViewSet(ReadOnlyModelViewSet):
     queryset=UserProfile.objects.all()
-    serializer_class=UserSerializer
+    serializer_class=UserProfileSerializer
     permission_classes = (IsAuthenticated, )
