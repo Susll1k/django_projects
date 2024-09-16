@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-hc=%kw&lchdwcdj9j-it!&1um2a&8(rwoqj3z#78r=#as$$!#^
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -86,6 +86,57 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'filters':{
+        'require_debug_false':{
+            '()':'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true':{
+            '()':'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters':{
+        'simple':{
+            'format':'[%(asctime)s] %(levelname)s: %(message)s',
+            'datefmt': '%Y.%m.%d %H:%M:%S'
+        }
+    },
+    'handlers':{
+        'console_dev':{
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+            'filters': ['require_debug_true']
+        },
+        'console_prod':{
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+            'level':'ERROR',
+            'filters': ['require_debug_false']
+        },
+        'file':{
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': BASE_DIR / 'debug.log',
+            'maxBytes': 1048576,
+            'backupCount': 10,
+            'formatter': 'simple'
+        },
+    },
+    'loggers':{
+        'djnago':{
+            'handlers': ['console_dev','console_prod'],
+        },
+        'django.server':{
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        }
+    }
+}
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
